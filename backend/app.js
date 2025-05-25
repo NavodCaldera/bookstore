@@ -1,11 +1,10 @@
 const express = require('express');
 const app = express();
-const authRoutes = require('./routes/authRoutes');
 const cors = require('cors');
+const authRoutes = require('./routes/authRoutes');
 
 app.use(cors());
-app.use(express.json()); // parse JSON body
+app.use(express.json());
+app.use('/api/auth', authRoutes);
 
-app.use('/api/auth', authRoutes); // /api/auth/register
-
-module.exports = app;
+module.exports = app;  // <-- make sure you export app here
